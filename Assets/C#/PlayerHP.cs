@@ -12,8 +12,10 @@ public class PlayerHP : MonoBehaviour {
     public Button_Controller gotoMainpage;
     public enemySpawn a;
     public PlayerMove b;
-    public EnemyMove c;
+    //public Text higestScoreText;
+    //public PlayerMove c;
 
+    public Text higestScoreText;
     public GameObject gotobutton;
 
     public void HealHp(int amount) {
@@ -21,30 +23,36 @@ public class PlayerHP : MonoBehaviour {
         UpdateHp();
     }
     public void DemageHp(int amount) {
-        hp -= amount;        
-        if (hp < 9) { Death(); }
-        UpdateHp(); 
+        hp -= amount;
+        UpdateHp();
+        if (hp <= 9) {
+            Death();
+        }
+        else UpdateHp();
     }
 
-    private void Death()
-    {
+    public void Death() {
         a.GAMESTAND = false;
         b.GAMESTAND = false;
+        //c.GAMESTAND = false;
         
-      //  c.GAMESTAND = false;
+      if (hp == 9)
         gotobutton.SetActive(!gotobutton.activeSelf);
-     
     }
 
-    public void UpdateHp()
-    {
-        
+    public void UpdateHp(){
         hpText.text = hp.ToString();
+        higestScoreText.text = hpText.text;
+
+
     }
-    private void Start()
-    {
-        hpText.text = hp.ToString();
-        lastAutoHealTime = Time.time;
+   
+    void Update(){
+            hpText.text = hp.ToString();
+           lastAutoHealTime = Time.time;
     }
+
+
+
 
 }

@@ -19,21 +19,16 @@ public class PlayerCollision : MonoBehaviour {
         //컨포넌트가 붙어 있는지 여부로 구분
         //if (other.GetComponent<EnemyMove>()) {
         //태그로 구분
-      
-            if (other.tag == "Enemy")
-            {
-
+            if (other.tag == "Enemy") { 
                 var spark = Instantiate(Spark);
                 spark.transform.position = other.transform.position;
                 audioSoirce.Play();
                 plyerHp.DemageHp(1);
                 Destroy(other.gameObject);
             }
-        
     }
 
-    internal void DisableEffects()
-    {
+    internal void DisableEffects() {
         throw new NotImplementedException();
     }
 }

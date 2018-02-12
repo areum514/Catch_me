@@ -8,7 +8,8 @@ public class enemySpawn : MonoBehaviour
     public float spawnInterval = 1.5f;
     public float spawnRadius = 10.0f;
     public GameObject player;
- 
+   
+
     void Update(){
         if (GAMESTAND)
         {
@@ -18,6 +19,7 @@ public class enemySpawn : MonoBehaviour
                 lastSpawnTime = Time.time;
             }
         }
+     
     }
 
     private void Spawn() {

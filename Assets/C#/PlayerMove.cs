@@ -1,11 +1,9 @@
-﻿
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour {
 
-    public float speed = 5;
+    public float speed =6;
     public DirPad dirPad;
     public GameObject hpPanel;
 

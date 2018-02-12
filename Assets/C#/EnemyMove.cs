@@ -1,11 +1,10 @@
-﻿
-
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyMove : MonoBehaviour {
     public bool GAMESTAND = true;
-    public float speed = 2.0f;
+    public float speed = 10f;
     public GameObject Player;
+
     private void Start() {
         Player = GameObject.Find("Player");
     }

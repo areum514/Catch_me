@@ -1,32 +1,39 @@
 ﻿
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Button_Controller  : MonoBehaviour {
     public AudioSource audioSoirce;//sound file
+    public AudioSource buttonSound;
     public GameObject hpPanel;
     public GameObject gotoMain;
+
     public Text addNumberButtionText;//누르면 증가하는 버튼의 text
-    
-    public void Start() {
-        
-      //  addNumberButtionText.text = PlayerPrefs.GetInt("ADD_NUMBER").ToString();
-    }
+ // public Text higestScoreText;
+    public Text timetext;
+
 
     public void OpenMainScene() {
+        
         SceneManager.LoadScene("Main");
     }
 
     public void OpenSplashScene(){
+       
         SceneManager.LoadScene("Splash");
     }
 
     public void playSound() {
+        
         audioSoirce.Play();
     }
 
+  
+
     public void ToggleHpPanel() {
+        buttonSound.Play();
         hpPanel.SetActive(!hpPanel.activeSelf);
     }
     
@@ -35,11 +42,17 @@ public class Button_Controller  : MonoBehaviour {
         addNumberButtionText.text = (addNumber + 1).ToString();
         PlayerPrefs.SetInt("ADD_NUMBER", addNumber + 1);
         PlayerPrefs.Save();
+        
     }
-  
-    public void gotoMainpage() {
-       
-        SceneManager.LoadScene("Splash");
+
+
+    void update()
+    {
+            var t = TimeSpan.FromSeconds(Time.time);
+            timetext.text = string.Format("{0}:{1} ", t.Seconds, (t.Milliseconds) / 10);
+ 
     }
+
+
 
 }
